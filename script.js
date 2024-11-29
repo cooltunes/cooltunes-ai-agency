@@ -82,10 +82,47 @@ const createTypingAnimation = () => {
     typeWriter();
 };
 
+// Theme toggling functionality
+const setupThemeToggle = () => {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const htmlElement = document.documentElement;
+    const moonIcon = '<i class="fas fa-moon" aria-hidden="true"></i>';
+    const sunIcon = '<i class="fas fa-sun" aria-hidden="true"></i>';
+
+    // Check for saved theme preference, otherwise use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    
+    // Set initial theme
+    htmlElement.setAttribute('data-theme', initialTheme);
+    themeToggle.innerHTML = initialTheme === 'dark' ? sunIcon : moonIcon;
+
+    // Theme toggle click handler
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggle.innerHTML = newTheme === 'dark' ? sunIcon : moonIcon;
+    });
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark' ? sunIcon : moonIcon;
+        }
+    });
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     createMobileMenu();
     createIntersectionObserver();
     setupFormValidation();
     createTypingAnimation();
+    setupThemeToggle();
 });
