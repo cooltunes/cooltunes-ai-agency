@@ -37,29 +37,67 @@ const createIntersectionObserver = () => {
     });
 };
 
-// Form handling with validation
+// Form validation with accessibility improvements
 const setupFormValidation = () => {
-    const form = document.querySelector('#contact form');
-    const submitButton = form.querySelector('button[type="submit"]');
+    const form = document.getElementById('contact-form');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+
+    const validateInput = (input, errorId, validationFn) => {
+        const errorElement = document.getElementById(errorId);
+        const isValid = validationFn(input.value);
+        
+        if (!isValid) {
+            input.setAttribute('aria-invalid', 'true');
+            errorElement.textContent = input.validationMessage || `Please enter a valid ${input.name}`;
+        } else {
+            input.setAttribute('aria-invalid', 'false');
+            errorElement.textContent = '';
+        }
+        
+        return isValid;
+    };
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    };
+
+    const validateName = (name) => name.trim().length >= 2;
+    const validateMessage = (message) => message.trim().length >= 10;
+
+    nameInput.addEventListener('input', () => {
+        validateInput(nameInput, 'name-error', validateName);
+    });
+
+    emailInput.addEventListener('input', () => {
+        validateInput(emailInput, 'email-error', validateEmail);
+    });
+
+    messageInput.addEventListener('input', () => {
+        validateInput(messageInput, 'message-error', validateMessage);
+    });
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Basic form validation
-        const name = form.querySelector('input[type="text"]').value;
-        const email = form.querySelector('input[type="email"]').value;
-        const message = form.querySelector('textarea').value;
+        const isNameValid = validateInput(nameInput, 'name-error', validateName);
+        const isEmailValid = validateInput(emailInput, 'email-error', validateEmail);
+        const isMessageValid = validateInput(messageInput, 'message-error', validateMessage);
 
-        if (name && email && message) {
-            submitButton.innerHTML = 'Sending...';
-            // Simulate form submission
-            setTimeout(() => {
-                submitButton.innerHTML = 'Message Sent!';
-                form.reset();
-                setTimeout(() => {
-                    submitButton.innerHTML = 'Send Message';
-                }, 2000);
-            }, 1500);
+        if (isNameValid && isEmailValid && isMessageValid) {
+            // Form is valid, handle submission
+            const successMessage = document.createElement('div');
+            successMessage.setAttribute('role', 'alert');
+            successMessage.setAttribute('aria-live', 'polite');
+            successMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+            form.appendChild(successMessage);
+        } else {
+            // Focus the first invalid input
+            if (!isNameValid) nameInput.focus();
+            else if (!isEmailValid) emailInput.focus();
+            else if (!isMessageValid) messageInput.focus();
         }
     });
 };
