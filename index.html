@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CoolTunes AI Consultancy - Strategic AI consulting to drive innovation and efficiency">
     <title>CoolTunes AI Consultancy</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">CoolTunes AI Consultancy</div>
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                CoolTunes AI
+            </div>
             <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -22,57 +27,95 @@
         <section id="hero">
             <h1>Transforming Business with AI Solutions</h1>
             <p>Strategic AI consulting to drive innovation and efficiency</p>
-            <a href="#services" class="cta-button">Explore Our Services</a>
+            <div class="cta-container">
+                <a href="#services" class="cta-button primary">Explore Our Services</a>
+                <a href="#contact" class="cta-button secondary">Get in Touch</a>
+            </div>
         </section>
 
         <section id="services">
             <h2>Our Services</h2>
             <div class="service-grid">
                 <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
                     <h3>AI Strategy Development</h3>
-                    <p>Craft comprehensive AI strategies tailored to your business goals.</p>
+                    <p>Craft comprehensive AI strategies tailored to your business goals and market position.</p>
                 </div>
                 <div class="service-card">
+                    <i class="fas fa-robot"></i>
                     <h3>Machine Learning Consulting</h3>
-                    <p>Expert guidance in implementing machine learning solutions.</p>
+                    <p>Expert guidance in implementing cutting-edge machine learning solutions for your specific needs.</p>
                 </div>
                 <div class="service-card">
+                    <i class="fas fa-database"></i>
                     <h3>Data Analysis and Preparation</h3>
-                    <p>Transform raw data into actionable insights.</p>
+                    <p>Transform raw data into actionable insights using advanced analytics and AI techniques.</p>
                 </div>
                 <div class="service-card">
+                    <i class="fas fa-cog"></i>
                     <h3>AI Solution Implementation</h3>
-                    <p>End-to-end implementation of AI technologies.</p>
+                    <p>End-to-end implementation of AI technologies with seamless integration into your workflow.</p>
                 </div>
                 <div class="service-card">
+                    <i class="fas fa-code"></i>
                     <h3>Custom AI Application Development</h3>
-                    <p>Develop tailored AI applications for unique business needs.</p>
+                    <p>Develop tailored AI applications that address your unique business challenges.</p>
                 </div>
                 <div class="service-card">
+                    <i class="fas fa-network-wired"></i>
                     <h3>AI Technology Integration</h3>
-                    <p>Seamlessly integrate AI technologies into existing systems.</p>
+                    <p>Seamlessly integrate AI technologies into your existing systems and infrastructure.</p>
                 </div>
             </div>
         </section>
 
         <section id="about">
             <h2>About CoolTunes AI Consultancy</h2>
-            <p>We are a forward-thinking AI consultancy dedicated to helping businesses leverage cutting-edge artificial intelligence technologies. Our team of experts provides strategic insights and innovative solutions to transform your business.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>We are a forward-thinking AI consultancy dedicated to helping businesses leverage cutting-edge artificial intelligence technologies. Our team of experts provides strategic insights and innovative solutions to transform your business.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> Experienced AI Professionals</li>
+                        <li><i class="fas fa-check-circle"></i> Customized Solutions</li>
+                        <li><i class="fas fa-check-circle"></i> Industry Best Practices</li>
+                        <li><i class="fas fa-check-circle"></i> Proven Track Record</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <form>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><i class="fas fa-envelope"></i> Email: info@cooltunesai.com</p>
+                    <p><i class="fas fa-phone"></i> Phone: (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Location: Silicon Valley, CA</p>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" required>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 CoolTunes AI Consultancy. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2024 CoolTunes AI Consultancy. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

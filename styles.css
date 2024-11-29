@@ -113,6 +113,25 @@ nav ul li a:hover {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #3498db;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
 }
 
 .service-card:hover {
@@ -155,6 +174,13 @@ nav ul li a:hover {
     height: 150px;
 }
 
+#contact input:focus,
+#contact textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
 #contact button {
     background-color: #3498db;
     color: white;
@@ -163,6 +189,26 @@ nav ul li a:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#contact button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+#contact button:active::after {
+    width: 200px;
+    height: 200px;
 }
 
 #contact button:hover {
@@ -175,6 +221,39 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
+}
+
+/* Additional Styles for Enhanced Features */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --light-bg: #f4f4f4;
+    --transition: all 0.3s ease;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Fade-in Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive Design */
@@ -196,5 +275,32 @@ footer {
 
     nav ul li {
         margin: 10px 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #2c3e50;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    #hero {
+        padding: 60px 20px;
+    }
+
+    #hero h1 {
+        font-size: 2rem;
     }
 }
